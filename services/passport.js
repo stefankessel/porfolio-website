@@ -18,7 +18,7 @@ passport.deserializeUser( async(id,done) => {
 passport.use(new GoogleStrategy({
     clientID: key.GOOGLE_CLIENT_ID,
     clientSecret: key.GOOGLE_CLIENT_SECRET,
-    callbackURL: "https://stefankessel.herokuapp.com/auth/google/callback",
+    callbackURL: '/auth/google/callback',
     proxy: true
   },
   async(accessToken, refreshToken, profile, done) => {
@@ -51,7 +51,7 @@ passport.use(new GoogleStrategy({
   passport.use(new GithubStrategy({
     clientID: key.GITHUB_CLIENT_ID,
     clientSecret: key.GITHUB_CLIENT_SECRET,
-    callbackURL: "https://stefankessel.herokuapp.com/auth/github/callback",
+    callbackURL: "/auth/github/callback",
     proxy: true
   }, async(accessToken, refreshToken, profile, done) => {
     try{
