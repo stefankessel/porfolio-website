@@ -51,8 +51,8 @@ passport.use(new GoogleStrategy({
   passport.use(new GithubStrategy({
     clientID: key.GITHUB_CLIENT_ID,
     clientSecret: key.GITHUB_CLIENT_SECRET,
-    callbackURL: "/auth/github/callback",
-    proxy: true
+    callbackURL: "https://stefankessel.herokuapp.com/auth/github/callback"
+    //proxy: true
   }, async(accessToken, refreshToken, profile, done) => {
     try{
       const user = await User.findOne({githubId: profile.id})
