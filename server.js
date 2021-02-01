@@ -17,14 +17,13 @@ const downloadRoutes = require('./routes/downloads');
 // Mongo DB
 require('./config/db');
 //Middleware
-app.use(helmet());
 app.use(
     helmet({
       contentSecurityPolicy: {
         directives: {
-          defaultSrc: ["'self'"],
+          defaultSrc: ["'self'", "'connect-src'"],
           styleSrc: ["'self'", "https:", "'unsafe-inline'"],
-          fontSrc: ["'self'", "https:"],
+          fontSrc: ["'self'", "https:",  "'connect-src'"],
           imgSrc: ["'self'"],
           scriptSrc: ["'self'", "'unsafe-inline'"],
           blockAllMixedContent: [],
