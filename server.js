@@ -1,5 +1,5 @@
 const express = require('express');
-const helmet = require('helmet');
+//const helmet = require('helmet');
 const app = express();
 
 const passport = require('passport');
@@ -17,23 +17,23 @@ const downloadRoutes = require('./routes/downloads');
 // Mongo DB
 require('./config/db');
 //Middleware
-app.use(
-    helmet({
-      contentSecurityPolicy: {
-        directives: {
-          defaultSrc: ["'self'", "'connect-src'"],
-          styleSrc: ["'self'", "https:", "'unsafe-inline'"],
-          fontSrc: ["'self'", "https:",  "'connect-src'"],
-          imgSrc: ["'self'"],
-          scriptSrc: ["'self'", "'unsafe-inline'"],
-          blockAllMixedContent: [],
-          upgradeInsecureRequests: [],
-          baseUri: ["'self'"],
-          frameAncestors: ["'self'"],
-        },
-      },
-    })
-  );
+// app.use(
+//     helmet({
+//       contentSecurityPolicy: {
+//         directives: {
+//           defaultSrc: ["'self'", "'connect-src'"],
+//           styleSrc: ["'self'", "https:", "'unsafe-inline'"],
+//           fontSrc: ["'self'", "https:",  "'connect-src'"],
+//           imgSrc: ["'self'"],
+//           scriptSrc: ["'self'", "'unsafe-inline'"],
+//           blockAllMixedContent: [],
+//           upgradeInsecureRequests: [],
+//           baseUri: ["'self'"],
+//           frameAncestors: ["'self'"],
+//         },
+//       },
+//     })
+//   );
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
 
