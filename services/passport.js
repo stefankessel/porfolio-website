@@ -18,12 +18,11 @@ passport.deserializeUser( async(id,done) => {
 passport.use(new GoogleStrategy({
     clientID: key.GOOGLE_CLIENT_ID,
     clientSecret: key.GOOGLE_CLIENT_SECRET,
-    callbackURL: "/auth/google/callback",
+    callbackURL: "https://stefankessel.herokuapp.com/auth/google/callback",
     proxy: true
   },
   async(accessToken, refreshToken, profile, done) => {
 
-    console.log(profile)
     try{
       const user = await User.findOne({googleId : profile.id})
       // if user already exists, no new DB entry
@@ -52,10 +51,9 @@ passport.use(new GoogleStrategy({
   passport.use(new GithubStrategy({
     clientID: key.GITHUB_CLIENT_ID,
     clientSecret: key.GITHUB_CLIENT_SECRET,
-    callbackURL: "/auth/github/callback",
+    callbackURL: "https://stefankessel.herokuapp.com/auth/github/callback",
     proxy: true
   }, async(accessToken, refreshToken, profile, done) => {
-    console.log('profile: ', profile)
     try{
       const user = await User.findOne({githubId: profile.id})
       if(user){
