@@ -18,6 +18,23 @@ const downloadRoutes = require('./routes/downloads');
 require('./config/db');
 //Middleware
 app.use(helmet());
+app.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          defaultSrc: ["'self'"],
+          styleSrc: ["'self'", "https:", "'unsafe-inline'"],
+          fontSrc: ["'self'", "https:"],
+          imgSrc: ["'self'"],
+          scriptSrc: ["'self'", "'unsafe-inline'"],
+          blockAllMixedContent: [],
+          upgradeInsecureRequests: [],
+          baseUri: ["'self'"],
+          frameAncestors: ["'self'"],
+        },
+      },
+    })
+  );
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
 
