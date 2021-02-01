@@ -36,20 +36,17 @@ app.use('/auth', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/download', downloadRoutes);
 
-// production routing
+
+//handling routes in production
 if(process.env.NODE_ENV === 'production'){
-    // serve routes defined in express or react
-    //app.use(express.static('client/build'))
     const path = require('path');
-    app.use(express.static(path.resolve(__dirname, "../client/build")));
+    // serve production assets such as main.js main.css
+    app.use(express.static('client/build'));
 
-    // if route is not found, serve index.html
-
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
-    });
-
-
+    //serve index.html if route is unknown
+    app.use('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    })
 }
 
 const PORT = process.env.PORT || 5000
