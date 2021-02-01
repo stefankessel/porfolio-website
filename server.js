@@ -31,7 +31,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //routes
-app.get('/', (req,res) => res.send('Hi there'))
 app.use('/api/email', emailRoutes);
 app.use('/auth', authRoutes);
 app.use('/api/user', userRoutes);
