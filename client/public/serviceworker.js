@@ -46,7 +46,7 @@ self.addEventListener('fetch', e => {
                     return res
                 }
                 let reqURL = e.request.clone();
-                fetch(reqURL)
+                return fetch(reqURL)
             })
         )    
     }
