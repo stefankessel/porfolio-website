@@ -18,4 +18,5 @@ export const techs = [
   "NoSQL",
   "Git",
   "Oath2",
+  "Cloudflare"
 ];
