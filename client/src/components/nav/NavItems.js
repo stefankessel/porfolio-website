@@ -64,7 +64,7 @@ const NavItems = ({open, close}) => {
     useEffect( () => {
         dispatch(userLogin())
     },[dispatch])
-
+ 
     return (
         <>
         <Backdrop showBackdrop={open} closeBackdrop={close}/>

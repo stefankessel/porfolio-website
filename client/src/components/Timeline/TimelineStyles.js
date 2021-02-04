@@ -24,7 +24,7 @@ export const TimelineContainer = styled.div`
 export const StyledTimelineItem = styled.div`
     display: flex;
     justify-content: flex-end;
-    padding-right: 30px;
+    padding-right: 20px;
     position: relative;
     margin: 10px 0;
     width: 50%;
@@ -33,7 +33,7 @@ export const StyledTimelineItem = styled.div`
     &:nth-child(odd){
         align-self: flex-end;
         justify-content: flex-start;
-        padding-left: 30px;
+        padding-left: 20px;
         padding-right: 0;
     }
 `
@@ -51,7 +51,7 @@ export const ItemContent = styled.div`
     color: ${props => props.theme.boxFont}
 
     @media only screen and (max-width: 767px){
-        padding: 15px 10px;
+        padding: 15px 5px;
         text-align: center;
         align-items: center;
         width: 100%;
@@ -66,7 +66,7 @@ export const ItemContent = styled.div`
         top: calc(50% - 7.5px);
         transform: rotate(45deg);
         width: 15px;
-        height: 15px;
+        height: 15px; 
 
     }
     ${StyledTimelineItem}:nth-child(odd) & {
@@ -117,7 +117,7 @@ export const ItemContent = styled.div`
         }
     }
     p{
-        font-size: 18px;
+        font-size: 1em;
         line-height: 24px;
         margin: 15px 0;
         max-width: 250px;

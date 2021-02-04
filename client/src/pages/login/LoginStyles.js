@@ -14,8 +14,10 @@ export const ContainerDiv = styled.div`
     border: 2px solid ${props => props.theme.fontColor};
     display: flex;
     flex-direction: column;
-    // align-items: center;
-    // justify-content:center;
+
+    @media only screen and (max-width: 767px){
+        width: 320px;
+    }
 
     h1, p{
         padding: 5px;

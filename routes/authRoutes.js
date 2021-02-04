@@ -7,14 +7,14 @@ const router = express.Router();
 router.get('/google',
   passport.authenticate('google', { scope: ['profile', 'email'] }));
 
-router.get('/google/callback',passport.authenticate('google'), (req, res) => {
+router.get('/google/callback',passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
     res.redirect('/resume');
 });
 
 // Auth with Github
 router.get('/github', passport.authenticate('github'));
 
-router.get('/github/callback', passport.authenticate('github'), (req, res) => {
+router.get('/github/callback', passport.authenticate('github', { failureRedirect: '/' }), (req, res) => {
   res.redirect('/resume');
 })
 

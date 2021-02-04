@@ -118,4 +118,4 @@ export const skills = [
     '#d75858',
     '#747fff',
     '#64cb7b',
-  ];
+  ]; 

@@ -8,7 +8,7 @@ export const data = [
         }
     },
     {
-        text: "Algorithmen und Datenstrukturen mit Java",
+        text: "Algorithmen und DatenStrukturen mit Java",
         date: "März 2020",
         category: {
             tag: 'Java',

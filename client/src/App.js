@@ -1,35 +1,53 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import Landing from './pages/landing/Landing';
-import Contact from './pages/contact/Contact';
+import Loader from "react-loader-spinner";
+
 import Layout from './container/Layout/Layout';
-import Login from './pages/login/Login';
-import About from './pages/about/About';
-import Resume from './pages/resume/Resume';
-import Site from './pages/aboutSite/AboutSite';
-import Coin from './pages/coins/Coin';
-import Projects from './pages/projects/Projects';
-import Terms from './pages/terms/Terms'
+import Landing from './pages/landing/Landing';
+
+const Contact = React.lazy( () => import('./pages/contact/Contact'));
+const Login = React.lazy( () => import('./pages/login/Login'));
+const About = React.lazy( () => import('./pages/about/About'));
+const Resume = React.lazy( () => import('./pages/resume/Resume'));
+const Site = React.lazy( () => import('./pages/aboutSite/AboutSite'));
+const Coin = React.lazy( () => import('./pages/coins/Coin'));
+const Projects = React.lazy( () => import( './pages/projects/Projects'));
+const Terms = React.lazy( () => import( './pages/terms/Terms'));
 
 const App = () => {
 
-  const isAuth = useSelector(state => state.auth)
+
+  //let isAuth = useSelector(state => state.auth)
+
   return (
     <>
       <BrowserRouter>
         <Layout>
-          <Switch>
-            <Route path="/contact" component={Contact}/>
-            <Route path="/about" component={About}/>
-            <Route path="/site" component={Site}/>
-            <Route path="/projects" component={Projects} />
-            <Route path="/terms-privacy" component={Terms} />
-            <Route path="/crypto" component={Coin} />
-            <Route path="/login" component={Login}/>
-            {isAuth ? (<Route path="/resume" component={Resume} />) : (<Route path="/resume" component={Login}/>)}          
-            <Route path="/" exact component={Landing}/>
-          </Switch>
+        <Route path="/" exact component={Landing}/>
+            <Suspense fallback={
+              <Loader
+                type="Audio"
+                color="#00BFFF"
+                height={100}
+                width={100}
+                style={{position:'absolute', left: '50%', top:'50%'}}
+              />
+            }>
+              <Switch>
+              {/* <Route path="/" exact component={Landing}/> */}
+              <Route path="/contact" component={Contact}/>
+              <Route path="/about" component={About}/>
+              <Route path="/site" component={Site}/>
+              <Route path="/projects" component={Projects} />
+              <Route path="/terms-privacy" component={Terms} />
+              <Route path="/crypto" component={Coin} />
+              <Route path="/resume" component={Resume} />
+              <Route path="/login" component={Login}/>
+              <Route path="/" component={Landing}/>
+              </Switch>
+            </Suspense>
+            {/* {isAuth ? (<Route path="/resume" component={Resume} />) : (<Route path="/resume" component={Login}/>)}      */}
+          
         </Layout>
       </BrowserRouter>     
     </>

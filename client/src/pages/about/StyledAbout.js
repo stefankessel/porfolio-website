@@ -6,7 +6,7 @@ export const Container = styled.div`
     margin-top: calc(var(--headerHeight) + 4rem);
 
     @media (max-width: 768px){
-        width:90%;
+        width:96%;
     }
     h1{
         font-size: 70px;
